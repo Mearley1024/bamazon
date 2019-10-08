@@ -1,6 +1,6 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
-
+// create the connection information for the sql database
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -8,12 +8,10 @@ var connection = mysql.createConnection({
   password: "Empress1024!",
   database: "bamazon_DB"
 });
-
 connection.connect(function(err) {
   if (err) throw err;
   console.log("connected as id " + connection.threadId);
 });
-
 connection.query("SELECT * FROM products", function(err, res){
   if (err) throw err;
   console.table(res);
